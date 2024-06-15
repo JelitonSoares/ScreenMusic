@@ -1,0 +1,20 @@
+1 - Cadastrar Artistas
+2 - Cadastrar músicas
+3 - Listar Músicas
+4 - Buscar Músicas por Artista
+5 - Pesquisar dados sobre um artista
+9 - Buscar Músicas por Gênero
+
+9 - Sair
+
+
+
+TABELA MÚSICAS          TABELA ARTISTAS
+
+ID                      ID
+NOME                    NOME
+ALBUM                   TIPO (SOLO/DUPLA/BANDA)
+CANTOR                  MUSICAS
+PARTICIPACAO            PARTICIPACOES
+GENERO (SERTANEJO/FUNK/ELETRÔNICA/PAGODE/ROCK/POP)               
+

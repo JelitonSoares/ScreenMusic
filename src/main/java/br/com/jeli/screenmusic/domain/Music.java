@@ -88,9 +88,9 @@ public class Music {
     @Override
     public String toString() {
         return "Nome: " + name +
-                " Album: " + album +
-                " Gênero: " + gender +
-                " Lançamento: " + releaseDate +
-                " Cantor: " + singer;
+                ", Album: " + album +
+                ", Gênero: " + gender +
+                ", Lançamento: " + releaseDate +
+                ", Cantor: " + singer;
     }
 }

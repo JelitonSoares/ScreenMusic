@@ -18,6 +18,7 @@ public class Main {
     private Scanner scanner = new Scanner(System.in);
     private ArtistService artistService;
     private MusicService musicService;
+    private Artist artist;
 
     public Main(ArtistRepository artistRepository, MusicRepository musicRepository) {
         this.artistService = new ArtistService(artistRepository);
@@ -40,6 +41,9 @@ public class Main {
                     break;
                 case 3:
                     listMusics();
+                    break;
+                case 4:
+                    searchMusicByArtist();
                     break;
                 case 0:
                     System.out.println("Finishing...");
@@ -86,6 +90,13 @@ public class Main {
 
         System.out.println("Artista cadastrado com sucesoo!!");
     }
+
+    private void searchArtistByName() {
+        System.out.println("Digite o nome do artista: ");
+        String artistName = scanner.nextLine();
+
+        this.artist = artistService.findByName(artistName);
+    }
     private void registerMusic() {
         List<MusicDTO> musicDTOList = new ArrayList<>();
         Boolean option = true;
@@ -113,22 +124,28 @@ public class Main {
                 System.out.println("Invalid Parameter!!");
         }
 
-        System.out.println("Digite o nome do artista: ");
-        String artistName = scanner.nextLine();
-
-        Artist artist = artistService.findByName(artistName);
+        searchArtistByName();
 
         List<Music> musics = musicDTOList.stream()
                 .map( d -> new Music(d))
                 .collect(Collectors.toList());
 
-        artist.setMusics(musics);
+        this.artist.setMusics(musics);
 
-        artistService.save(artist);
+        artistService.save(this.artist);
     }
 
     public void listMusics() {
         List<Music> musics = musicService.findAll();
         musics.forEach(System.out::println);
+    }
+
+    public void searchMusicByArtist() {
+        searchArtistByName();
+
+        List<Music> musics = artistService.findMusicByArtist(this.artist);
+        musics.forEach(m ->
+                System.out.println("Nome: " + m.getName() + ", Album: " + m.getAlbum() +
+                        ", Gênero: " + m.getGender() + ", Lançamento: " + m.getReleaseDate()));
     }
 }

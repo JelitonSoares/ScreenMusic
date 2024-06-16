@@ -4,6 +4,8 @@ import br.com.jeli.screenmusic.domain.Artist;
 import br.com.jeli.screenmusic.dtos.ArtistDTO;
 import br.com.jeli.screenmusic.repository.ArtistRepository;
 
+import java.util.Optional;
+
 public class ArtistService {
 
     private ArtistRepository repository;
@@ -16,5 +18,20 @@ public class ArtistService {
     public void register(ArtistDTO artistDTO) {
         Artist artist = new Artist(artistDTO);
         repository.save(artist);
+    }
+
+    public Artist findByName(String name) {
+        Optional<Artist> artistFounded = repository.findByNameContainingIgnoreCase(name);
+
+        if (artistFounded.isEmpty()) {
+            throw new RuntimeException("Artist not found!!");
+        }
+
+        return artistFounded.get();
+    }
+
+
+    public void save(Artist artist) {
+        this.repository.save(artist);
     }
 }

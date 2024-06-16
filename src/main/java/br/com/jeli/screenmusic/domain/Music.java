@@ -17,8 +17,6 @@ public class Music {
     private String album;
     @ManyToOne
     private Artist singer;
-    @ManyToOne
-    private Artist featuring;
     @Enumerated(value = EnumType.STRING)
     private MusicCategory gender;
     private LocalDate releaseDate;
@@ -69,14 +67,6 @@ public class Music {
 
     public void setSinger(Artist singer) {
         this.singer = singer;
-    }
-
-    public Artist getFeaturing() {
-        return featuring;
-    }
-
-    public void setFeaturing(Artist featuring) {
-        this.featuring = featuring;
     }
 
     public MusicCategory getGender() {

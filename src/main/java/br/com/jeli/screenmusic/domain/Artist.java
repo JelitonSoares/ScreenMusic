@@ -16,8 +16,6 @@ public class Artist {
     private ArtistCategory type;
     @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Music> musics;
-    @OneToMany(mappedBy = "featuring", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Music> musicsParticipation;
 
     public Artist() {
 
@@ -57,14 +55,8 @@ public class Artist {
     }
 
     public void setMusics(List<Music> musics) {
+        musics.forEach(m -> m.setSinger(this));
         this.musics = musics;
     }
 
-    public List<Music> getMusicsParticipation() {
-        return musicsParticipation;
-    }
-
-    public void setMusicsParticipation(List<Music> musicsParticipation) {
-        this.musicsParticipation = musicsParticipation;
-    }
 }

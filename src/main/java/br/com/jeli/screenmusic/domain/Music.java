@@ -84,4 +84,13 @@ public class Music {
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+    @Override
+    public String toString() {
+        return "Nome: " + name +
+                " Album: " + album +
+                " Gênero: " + gender +
+                " Lançamento: " + releaseDate +
+                " Cantor: " + singer;
+    }
 }

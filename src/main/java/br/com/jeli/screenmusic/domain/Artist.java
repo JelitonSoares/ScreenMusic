@@ -59,4 +59,9 @@ public class Artist {
         this.musics = musics;
     }
 
+    @Override
+    public String toString() {
+        return "Nome: " + name +
+                " Tipo: " + type;
+    }
 }

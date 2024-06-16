@@ -4,6 +4,7 @@ import br.com.jeli.screenmusic.dtos.MusicDTO;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 @Entity
@@ -31,7 +32,8 @@ public class Music {
         this.album = musicDTO.album();
         this.gender = MusicCategory.fromPortuguese(musicDTO.gender());
          try {
-             this.releaseDate = LocalDate.parse(musicDTO.releaseDate());
+             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+             this.releaseDate = LocalDate.parse(musicDTO.releaseDate(), formatter);
         } catch (DateTimeParseException ex) {
             this.releaseDate = null;
         }

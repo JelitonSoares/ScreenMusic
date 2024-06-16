@@ -1,9 +1,11 @@
 package br.com.jeli.screenmusic.service;
 
 import br.com.jeli.screenmusic.domain.Artist;
+import br.com.jeli.screenmusic.domain.Music;
 import br.com.jeli.screenmusic.dtos.ArtistDTO;
 import br.com.jeli.screenmusic.repository.ArtistRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ArtistService {
@@ -30,8 +32,11 @@ public class ArtistService {
         return artistFounded.get();
     }
 
-
     public void save(Artist artist) {
         this.repository.save(artist);
+    }
+
+    public List<Music> findMusicByArtist(Artist artist) {
+        return this.repository.findMusicByArtist(artist);
     }
 }

@@ -1,10 +1,16 @@
 package br.com.jeli.screenmusic.main;
 
+import br.com.jeli.screenmusic.domain.Artist;
+import br.com.jeli.screenmusic.domain.Music;
 import br.com.jeli.screenmusic.dtos.ArtistDTO;
+import br.com.jeli.screenmusic.dtos.MusicDTO;
 import br.com.jeli.screenmusic.repository.ArtistRepository;
 import br.com.jeli.screenmusic.service.ArtistService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     private Scanner scanner = new Scanner(System.in);
@@ -73,9 +79,44 @@ public class Main {
 
         System.out.println("Artista cadastrado com sucesoo!!");
     }
-
     private void registerMusic() {
-        System.out.println("Registering...");
+        List<MusicDTO> musicDTOList = new ArrayList<>();
+        Boolean option = true;
+        while (option) {
+            System.out.println("Deseja cadastrar uma música?(S/N) ");
+            String optionString = scanner.nextLine();
 
+            if (optionString.equalsIgnoreCase("s")) {
+                System.out.println("Digite o nome da música: ");
+                String musicName = scanner.nextLine();
+
+                System.out.println("Digite o album da música: ");
+                String musicAlbum = scanner.nextLine();
+
+                System.out.println("Digite o gênero da música(Sertanejo/Funk/Eletrônica/Pagode/Rock/Pop): ");
+                String musicGender = scanner.nextLine();
+
+                System.out.println("Digite a data de lançamento da música: ");
+                String releaseDate = scanner.nextLine();
+
+                musicDTOList.add(new MusicDTO(musicName, musicAlbum, musicGender, releaseDate));
+            } else if (optionString.equalsIgnoreCase("n")) {
+                option = false;
+            } else
+                System.out.println("Invalid Parameter!!");
+        }
+
+        System.out.println("Digite o nome do artista: ");
+        String artistName = scanner.nextLine();
+
+        Artist artist = artistService.findByName(artistName);
+
+        List<Music> musics = musicDTOList.stream()
+                .map( d -> new Music(d))
+                .collect(Collectors.toList());
+
+        artist.setMusics(musics);
+
+        artistService.save(artist);
     }
 }

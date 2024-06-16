@@ -5,7 +5,9 @@ import br.com.jeli.screenmusic.domain.Music;
 import br.com.jeli.screenmusic.dtos.ArtistDTO;
 import br.com.jeli.screenmusic.dtos.MusicDTO;
 import br.com.jeli.screenmusic.repository.ArtistRepository;
+import br.com.jeli.screenmusic.repository.MusicRepository;
 import br.com.jeli.screenmusic.service.ArtistService;
+import br.com.jeli.screenmusic.service.MusicService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +17,11 @@ import java.util.stream.Collectors;
 public class Main {
     private Scanner scanner = new Scanner(System.in);
     private ArtistService artistService;
+    private MusicService musicService;
 
-    public Main(ArtistRepository repository) {
-        this.artistService = new ArtistService(repository);
+    public Main(ArtistRepository artistRepository, MusicRepository musicRepository) {
+        this.artistService = new ArtistService(artistRepository);
+        this.musicService = new MusicService(musicRepository);
     }
 
     public void execute() {
@@ -33,6 +37,9 @@ public class Main {
                     break;
                 case 2:
                     registerMusic();
+                    break;
+                case 3:
+                    listMusics();
                     break;
                 case 0:
                     System.out.println("Finishing...");
@@ -118,5 +125,10 @@ public class Main {
         artist.setMusics(musics);
 
         artistService.save(artist);
+    }
+
+    public void listMusics() {
+        List<Music> musics = musicService.findAll();
+        musics.forEach(System.out::println);
     }
 }

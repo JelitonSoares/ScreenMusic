@@ -2,12 +2,14 @@ package br.com.jeli.screenmusic.main;
 
 import br.com.jeli.screenmusic.domain.Artist;
 import br.com.jeli.screenmusic.domain.Music;
+import br.com.jeli.screenmusic.domain.MusicCategory;
 import br.com.jeli.screenmusic.dtos.ArtistDTO;
 import br.com.jeli.screenmusic.dtos.MusicDTO;
 import br.com.jeli.screenmusic.repository.ArtistRepository;
 import br.com.jeli.screenmusic.repository.MusicRepository;
 import br.com.jeli.screenmusic.service.ArtistService;
 import br.com.jeli.screenmusic.service.MusicService;
+import jdk.jfr.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,9 @@ public class Main {
                     break;
                 case 5:
                     searchMusicByArtist();
+                    break;
+                case 6:
+                    searchMusicByGender();
                     break;
                 case 0:
                     System.out.println("Finishing...");
@@ -157,5 +162,15 @@ public class Main {
         musics.forEach(m ->
                 System.out.println("Nome: " + m.getName() + ", Album: " + m.getAlbum() +
                         ", Gênero: " + m.getGender() + ", Lançamento: " + m.getReleaseDate()));
+    }
+
+    public void searchMusicByGender() {
+        System.out.println("Digite qual gênero deseja buscar: ");
+        String nameGender = scanner.nextLine();
+        MusicCategory category = MusicCategory.fromPortuguese(nameGender);
+
+        List<Music> musicsFound = this.musicService.findByGender(category);
+
+        musicsFound.forEach(System.out::println);
     }
 }

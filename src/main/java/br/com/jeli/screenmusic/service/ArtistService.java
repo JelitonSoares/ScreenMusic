@@ -39,4 +39,8 @@ public class ArtistService {
     public List<Music> findMusicByArtist(Artist artist) {
         return this.repository.findMusicByArtist(artist);
     }
+
+    public List<Artist> findAll() {
+        return this.repository.findAll();
+    }
 }

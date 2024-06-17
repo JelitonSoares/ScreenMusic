@@ -43,6 +43,9 @@ public class Main {
                     listMusics();
                     break;
                 case 4:
+                    listArtist();
+                    break;
+                case 5:
                     searchMusicByArtist();
                     break;
                 case 0:
@@ -61,8 +64,9 @@ public class Main {
                 1 - Cadastrar Artistas
                 2 - Cadastrar Musicas
                 3 - Listar Musicas
-                4 - Buscar Musica por Artista
-                5 - Buscar Musica por Genero
+                4 - Listar Artistas
+                5 - Buscar Música por Artista
+                6 - Buscar Música por Gênero
                 
                 
                 0 - Sair
@@ -140,7 +144,13 @@ public class Main {
         musics.forEach(System.out::println);
     }
 
+    public void listArtist() {
+        List<Artist> artists = artistService.findAll();
+        artists.forEach(System.out::println);
+    }
+
     public void searchMusicByArtist() {
+        listArtist();
         searchArtistByName();
 
         List<Music> musics = artistService.findMusicByArtist(this.artist);

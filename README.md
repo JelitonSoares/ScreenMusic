@@ -14,10 +14,10 @@ Tudo isso de uma maneira bem simples apenas selecionando as opções por linha d
 
 # 📚Documentação das Tecnologias Utilizadas📚:
 
-![[Java](https://docs.oracle.com/en/java/javase/17/docs/api/index.html)](https://img.shields.io/badge/Java-FF0000?style=for-the-badge&logo=openjdk&logoColor=white)
-![[SpringBoot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-![[PostgreSQL](https://www.postgresql.org/docs/)](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![[SpringDataJPA](https://docs.spring.io/spring-data/jpa/reference/#repositories)](https://img.shields.io/badge/SpringDataJPA-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![](https://img.shields.io/badge/Java-FF0000?style=for-the-badge&logo=openjdk&logoColor=white)
+![](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![](https://img.shields.io/badge/SpringDataJPA-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 
 # 🎓Aprendizados🎓:
 Neste projeto e durante todo o curso o mergulho na persistência de dados, utilizando o SpringDataJPA e o PostegreSQL foi muito intensa
